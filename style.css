@@ -1,0 +1,360 @@
+/* ============================================ */
+/* Global & Reset Styles                        */
+/* ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::selection {
+    background: rgba(108, 99, 255, 0.3);
+    color: #fff;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0a0a1a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #6C63FF, #00D4AA);
+    border-radius: 3px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    cursor: default;
+}
+
+/* ============================================ */
+/* Three.js Canvas                              */
+/* ============================================ */
+
+#three-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ============================================ */
+/* Custom Cursor                                */
+/* ============================================ */
+
+.custom-cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(108, 99, 255, 0.6);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.15s ease, border-color 0.3s ease;
+    mix-blend-mode: difference;
+}
+
+.custom-cursor.hover {
+    transform: scale(2);
+    border-color: rgba(0, 212, 170, 0.8);
+}
+
+.cursor-dot {
+    width: 5px;
+    height: 5px;
+    background: #6C63FF;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.08s ease;
+}
+
+/* ============================================ */
+/* Navigation                                   */
+/* ============================================ */
+
+#navbar.scrolled {
+    background: rgba(10, 10, 26, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.nav-link {
+    position: relative;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    padding: 0.25rem 0;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #6C63FF, #00D4AA);
+    transition: width 0.3s ease;
+    border-radius: 1px;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.mobile-nav-link {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.mobile-nav-link:hover {
+    color: #6C63FF;
+    transform: translateX(10px);
+}
+
+/* Menu Toggle Active State */
+#menu-toggle.active .menu-line:nth-child(1) {
+    transform: rotate(45deg) translate(4px, 4px);
+}
+
+#menu-toggle.active .menu-line:nth-child(2) {
+    opacity: 0;
+}
+
+#menu-toggle.active .menu-line:nth-child(3) {
+    width: 1.5rem;
+    transform: rotate(-45deg) translate(4px, -4px);
+}
+
+#mobile-menu.open {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* ============================================ */
+/* Animations                                   */
+/* ============================================ */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes scrollDot {
+    0% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(6px); }
+}
+
+@keyframes bounceSlow {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-8px); }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 5px rgba(108, 99, 255, 0.3); }
+    50% { box-shadow: 0 0 20px rgba(108, 99, 255, 0.6), 0 0 40px rgba(108, 99, 255, 0.2); }
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.animate-fadeInUp {
+    animation: fadeInUp 0.8s ease forwards;
+    opacity: 0;
+}
+
+.animation-delay-200 { animation-delay: 0.2s; }
+.animation-delay-400 { animation-delay: 0.4s; }
+.animation-delay-500 { animation-delay: 0.5s; }
+.animation-delay-600 { animation-delay: 0.6s; }
+
+.animate-bounce-slow {
+    animation: bounceSlow 3s ease-in-out infinite;
+}
+
+.animate-scroll-dot {
+    animation: scrollDot 1.5s ease-in-out infinite;
+}
+
+.typing-cursor {
+    animation: blink 0.8s ease-in-out infinite;
+}
+
+/* ============================================ */
+/* Skill Cards                                  */
+/* ============================================ */
+
+.skill-card {
+    position: relative;
+    transition: all 0.6s ease;
+}
+
+.skill-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.skill-bar {
+    width: 0;
+    transition: width 1.5s ease;
+}
+
+.skill-bar.animate {
+    /* Width set via JS from data-width */
+}
+
+/* ============================================ */
+/* Project Cards                                */
+/* ============================================ */
+
+.project-card {
+    transition: all 0.6s ease;
+}
+
+.project-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================ */
+/* Section Reveal Animation                     */
+/* ============================================ */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================ */
+/* Glassmorphism Utilities                      */
+/* ============================================ */
+
+.glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ============================================ */
+/* Gradient Text Animation                      */
+/* ============================================ */
+
+.gradient-text-animated {
+    background: linear-gradient(270deg, #6C63FF, #00D4AA, #FF6B9D, #6C63FF);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 6s ease infinite;
+}
+
+/* ============================================ */
+/* Responsive Adjustments                       */
+/* ============================================ */
+
+@media (max-width: 768px) {
+    .custom-cursor,
+    .cursor-dot {
+        display: none;
+    }
+}
+
+/* ============================================ */
+/* Page Load Animation                          */
+/* ============================================ */
+
+.page-loader {
+    position: fixed;
+    inset: 0;
+    background: #0a0a1a;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.page-loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(108, 99, 255, 0.2);
+    border-top: 3px solid #6C63FF;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ============================================ */
+/* AOS Custom Overrides                         */
+/* ============================================ */
+
+[data-aos] {
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Smoother zoom-in for skill cards */
+[data-aos="zoom-in"] {
+    transform: scale(0.85);
+}
+
+[data-aos="zoom-in"].aos-animate {
+    transform: scale(1);
+}
