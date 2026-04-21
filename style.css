@@ -28,10 +28,14 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
     cursor: default;
+    overflow-x: hidden;
+    position: relative;
+    width: 100%;
 }
 
 /* ============================================ */
@@ -351,11 +355,12 @@ body {
     opacity: 0.15;
     pointer-events: none;
     animation: blobFloat 8s ease-in-out infinite;
+    max-width: 100vw;
 }
 
 .gradient-blob-1 {
-    width: 500px;
-    height: 500px;
+    width: min(500px, 80vw);
+    height: min(500px, 80vw);
     background: radial-gradient(circle, #6C63FF, transparent 70%);
     top: -10%;
     left: -5%;
@@ -363,8 +368,8 @@ body {
 }
 
 .gradient-blob-2 {
-    width: 400px;
-    height: 400px;
+    width: min(400px, 70vw);
+    height: min(400px, 70vw);
     background: radial-gradient(circle, #00D4AA, transparent 70%);
     bottom: -5%;
     right: -5%;
@@ -778,11 +783,18 @@ body {
     }
 
     .gradient-blob {
-        opacity: 0.08;
+        opacity: 0.06;
     }
 
-    .gradient-blob-1 { width: 300px; height: 300px; }
-    .gradient-blob-2 { width: 250px; height: 250px; }
+    .gradient-blob-1 { width: 200px; height: 200px; }
+    .gradient-blob-2 { width: 180px; height: 180px; }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+    .gradient-blob {
+        display: none;
+    }
 }
 
 /* ============================================ */

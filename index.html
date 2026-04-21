@@ -54,6 +54,9 @@
   </head>
   <body class="bg-dark-900 text-white font-body overflow-x-hidden">
 
+    <!-- Main wrapper to prevent horizontal overflow -->
+    <div class="overflow-x-hidden w-full">
+
     <!-- ==================== PAGE LOADER ==================== -->
     <div id="page-loader" class="page-loader">
       <div class="loader-content">
@@ -138,7 +141,7 @@
     </nav>
 
     <!-- ==================== HOME SECTION ==================== -->
-    <section id="home" class="relative min-h-screen flex items-center justify-center px-6">
+    <section id="home" class="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
       <!-- Gradient Blobs -->
       <div class="gradient-blob gradient-blob-1"></div>
       <div class="gradient-blob gradient-blob-2"></div>
@@ -205,7 +208,7 @@
     <div class="section-divider"></div>
 
     <!-- ==================== ABOUT SECTION ==================== -->
-    <section id="about" class="relative py-32 px-6">
+    <section id="about" class="relative py-32 px-6 overflow-hidden">
       <div class="max-w-6xl mx-auto">
         <!-- Section Header -->
         <div class="text-center mb-20" data-aos="fade-up">
@@ -330,7 +333,7 @@
     <div class="section-divider"></div>
 
     <!-- ==================== SKILLS SECTION ==================== -->
-    <section id="skills" class="relative py-32 px-6">
+    <section id="skills" class="relative py-32 px-6 overflow-hidden">
       <div class="max-w-6xl mx-auto">
         <!-- Section Header -->
         <div class="text-center mb-20" data-aos="fade-up">
@@ -610,7 +613,7 @@
     <div class="section-divider"></div>
 
     <!-- ==================== PROJECTS SECTION ==================== -->
-    <section id="projects" class="relative py-32 px-6">
+    <section id="projects" class="relative py-32 px-6 overflow-hidden">
       <div class="max-w-6xl mx-auto">
         <!-- Section Header -->
         <div class="text-center mb-20" data-aos="fade-up">
@@ -722,7 +725,7 @@
     <div class="section-divider"></div>
 
     <!-- ==================== EXPERIENCE / JOURNEY SECTION ==================== -->
-    <section id="experience" class="relative py-32 px-6">
+    <section id="experience" class="relative py-32 px-6 overflow-hidden">
       <div class="max-w-4xl mx-auto">
         <!-- Section Header -->
         <div class="text-center mb-20" data-aos="fade-up">
@@ -784,7 +787,7 @@
     <div class="section-divider"></div>
 
     <!-- ==================== FUN FACTS SECTION ==================== -->
-    <section id="fun-facts" class="relative py-24 px-6">
+    <section id="fun-facts" class="relative py-24 px-6 overflow-hidden">
       <div class="max-w-5xl mx-auto">
         <div class="text-center mb-16" data-aos="fade-up">
           <span class="font-mono text-accent text-sm tracking-widest uppercase">⚡ Fun Facts</span>
@@ -821,7 +824,7 @@
     <div class="section-divider"></div>
 
     <!-- ==================== CONTACT SECTION ==================== -->
-    <section id="contact" class="relative py-32 px-6">
+    <section id="contact" class="relative py-32 px-6 overflow-hidden">
       <div class="max-w-4xl mx-auto">
         <!-- Section Header -->
         <div class="text-center mb-20" data-aos="fade-up">
@@ -924,6 +927,8 @@
     <button id="back-to-top" class="back-to-top" aria-label="Back to top">
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
     </button>
+
+    </div><!-- End overflow wrapper -->
 
     <!-- ==================== SCRIPTS ==================== -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
