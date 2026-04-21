@@ -12,16 +12,19 @@
 (function () {
     'use strict';
 
+    // ---- Mobile Detection ----
+    const isMobile = window.innerWidth <= 768 || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
     // ---- Configuration ----
     const CONFIG = {
-        particleCount: 1800,
-        galaxyBranches: 5,
+        particleCount: isMobile ? 600 : 1800,
+        galaxyBranches: isMobile ? 3 : 5,
         galaxyRadius: 12,
         galaxySpin: 1.2,
-        particleSize: 0.025,
-        floatingShapesCount: 15,
-        connectionDistance: 2.5,
-        maxConnections: 80,
+        particleSize: isMobile ? 0.035 : 0.025,
+        floatingShapesCount: isMobile ? 6 : 15,
+        connectionDistance: isMobile ? 0 : 2.5, // Disable connections on mobile
+        maxConnections: isMobile ? 0 : 80,
         mouseInfluence: 0.0003,
         colors: {
             primary: new THREE.Color(0x6C63FF),
